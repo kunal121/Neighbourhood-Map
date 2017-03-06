@@ -87,13 +87,28 @@ var viewmodel = function() {
         marker.addListener('mouseout', function() {
             this.setIcon(defaultMarker); //when we take are mouse away from marker calling function setIcon color changes back to default
         });
+        //bounce marker when click on it
+        var makeBounce =null;
+        var clickListener = function() {
+        if(makeBounce!=null)
+         makeBounce.setAnimation(null);
+        if(makeBounce != this) {
+        this.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout(function(){makeBounce.setAnimation(null);},500)
+        makeBounce = this;
+        }
+       else
+        makeBounce = null;
+        }
+     google.maps.event.addListener(marker, 'click', clickListener);
         marker.addListener('click', function() {
             openInfoWindow(this, Infowindow); //on clicking marker calling function openInfoWindow()
         });
     }
 
     // get rating for each marker
-    locations.forEach(function(m) { //passing m for marker
+    locations.forEach(function(m) {
+        //passing m for marker
         $.ajax({ //ajax request for foursquare api
             method: 'GET',
             dataType: "json",
@@ -110,11 +125,12 @@ var viewmodel = function() {
                 }
             },
             error: function(e) { //if any error occur in fetching data
-                console.log('There is some error in fetching data');
+                alert('There is some error in fetching data');
             }
-        });
 
+        });
     });
+
 
 
     function openInfoWindow(marker, infowindow) //opening info window on click of marker
@@ -125,9 +141,10 @@ var viewmodel = function() {
 
             infowindow.setContent('<div>' + '<h3>' + marker.title + '</h3>' + "<h4>Ratings:" + marker.rating + '</h4> </div><div><img src="' + marker.image + '"></div>'); //set content that should be appear in info window
 
-
+            if(marker.rating!=null || marker.image!=null)
+            {
             infowindow.open(map, marker);
-
+            }
             // Make sure the marker property is cleared if the infowindow is closed.
             infowindow.addListener('closeclick', function() {
                 infowindow.marker = null;

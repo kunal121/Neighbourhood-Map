@@ -55,9 +55,15 @@
             });
             ko.applyBindings(new viewmodel());
         }
+        function googleerror()
+        {
+          alert("Map is not loading properly00");
+        }
+
+
     </script>
     <script src="js\app.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSj-NGL4BjWvzud0dDgEjL9OMv89fH8ko&v=3&callback=initMap">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSj-NGL4BjWvzud0dDgEjL9OMv89fH8ko&v=3&callback=initMap" onerror="googleerror()">
         //google api
     </script>
 
