@@ -1,16 +1,24 @@
 # Neighbourhood-Map 
 ## How To Run
-* Open Folder Neighbourhood-Map.
-* Open File Index.html.
-* you will able to see the map and markers on it.
-* you can filter search on search bar.
-* you can click on marker to open information window such as rating and image.
+> * Download Folder Neighbourhood-Map.
+> * Open File Index.html.
+> * You will able to see the map and markers on it.
+> * You can filter search on search bar.
+> * You can click on marker to open information window such as rating and image.
 
-## How it works
-* google api to load map and markers.
-* foursquare api to fetch data.
-* use knockout js to bind data.
-* Define model and viewmodel.
-* open app.js to open to see java script.
-* comments will help you out to go through the code.
+## Technologies Used
+
+> * Used Google Map Api to load map and markers.
+@ https://developers.google.com/maps/
+
+> * Used FourSquare Api to fetch data for markers and display the information when User clicks on the marker
+@ https://developer.foursquare.com/
+
+> * Used Knockout Js to bind data.
+@ knockoutjs.com/documentation
+
+## Code
+> * Open `index.html` file for running the application.
+> * Open `app.js` to see java script.
+> * Comments will help you out to go through the code.
 
